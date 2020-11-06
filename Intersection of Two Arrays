@@ -1,0 +1,25 @@
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        if (nums1.length == 0 || nums2.length == 0 || nums2 == null || nums1 == null)
+            return new int[0];
+        //如果任意数组没有元素或者为空则解的集合为空
+        Set<Integer> set = new HashSet<>();
+        Set<Integer> ansSet = new HashSet<>();
+        //创建两个HashSet
+        for(int i=0; i<nums1.length; i++)
+            set.add(nums1[i]);
+        //循环将元素注入set中
+        for(int i=0; i<nums2.length; i++)
+            if(set.contains(nums2[i]))
+                ansSet.add(nums2[i]);
+        //循环将之前set出现过的元素的注入另一个set
+        int index = 0;
+        int[] ans = new int[ansSet.size()];
+        //创建结果数组
+        for(Integer num:ansSet)
+            ans[index++] = num;
+        //将保存重复集合的set转化为数组
+        return ans;
+        //返回结果
+    }
+}
